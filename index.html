@@ -1,51 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>botao</title>
-    <style>
-        h1{
-            color: rgb(0, 97, 171);
-        }
+<html>
+  <head>
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="mydiv"></div>
 
-        button {
-            display: flex;
-            color: rgb(18, 188, 240);
-            background-color: rgb(22, 57, 82);
-        }
+    <script type="text/babel">
+      function Page() {
+        return (
+          <div>
+            <h1>Contador</h1>
+            <MyButton />
+            <MyButton />
+            <MyButton />
+          </div>
+        );
+      }
 
-        span{
-            font-size: 50px;
-        }
-    </style>
-</head>
-<body>
-    <h1>contadores</p>
-    <button onclick="add()">Total <span id="btn-1"></span></button>
-    <button onclick="add2()">Total <span id="btn-2"></span></button>
-    <p>teste2</p>    
-    <script>
-        var num1 = 0
-        var num2 = 0
+      function MyButton() {
+        return <button>Eu sou um botão</button>;
+      }
 
-        function add(){
-            num1++
-            render()
-        }
-
-        function add2(){
-            num2++
-            render()
-        }
-
-        function render(){
-            document.querySelector("#btn-1").innerText=num1
-            document.querySelector("#btn-2").innerText=num2 
-
-        }
-
-        render();
+      const container = document.getElementById("mydiv");
+      const root = ReactDOM.createRoot(container);
+      root.render(<Page />);
     </script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 </html>
