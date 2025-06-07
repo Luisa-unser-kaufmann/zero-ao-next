@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>botao</title>
+    <style>
+        h1{
+            color: rgb(0, 97, 171);
+        }
+
+        button {
+            display: flex;
+            color: rgb(18, 188, 240);
+            background-color: rgb(22, 57, 82);
+        }
+
+        span{
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>contadores</p>
+    <button onclick="add()">Total <span id="btn-1"></span></button>
+    <button onclick="add2()">Total <span id="btn-2"></span></button>
+    <p>teste2</p>    
+    <script>
+        var num1 = 0
+        var num2 = 0
+
+        function add(){
+            num1++
+            render()
+        }
+
+        function add2(){
+            num2++
+            render()
+        }
+
+        function render(){
+            document.querySelector("#btn-1").innerText=num1
+            document.querySelector("#btn-2").innerText=num2 
+
+        }
+
+        render();
+    </script>
+</body>
+</html>
